@@ -1,0 +1,19 @@
+.post__remove {
+	width: 18px;
+	height: 19px;
+	background-image: url(../../../images/trash.svg);
+	background-size: cover;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	transition: opacity 0.1s ease;
+}
+
+.post__remove:hover {
+	transform: scale(1.1);
+}

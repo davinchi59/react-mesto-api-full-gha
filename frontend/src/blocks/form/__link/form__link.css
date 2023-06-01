@@ -1,0 +1,11 @@
+.form__link {
+  color: #fff;
+  text-align: center;
+  margin: 15px 0 0;
+  transition: all .1s ease;
+  cursor: pointer;
+}
+
+.form__link:hover {
+  opacity: .6;
+}
