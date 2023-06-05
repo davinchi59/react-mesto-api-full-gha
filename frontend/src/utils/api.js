@@ -75,7 +75,7 @@ class Api {
 
 const instance = new Api({
 	// baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-60',
-	baseUrl: 'http://127.0.0.1:3000',
+	baseUrl: 'https://127.0.0.1:3000',
 	headers: {
 		authorization: 'e32193da-5eae-4794-b26e-ef37bd7713ab',
 		'Content-Type': 'application/json',
