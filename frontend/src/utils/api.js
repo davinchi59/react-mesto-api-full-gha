@@ -12,14 +12,20 @@ class Api {
 
 	getInitialCards() {
 		return fetch(`${this._baseUrl}/cards`, {
-			headers: this._headers,
+			headers: {
+				...this._headers,
+				Authorization: `Bearer ${localStorage.getItem('jwt')}$`,
+			},
 		}).then(this._handleResponse)
 	}
 
 	addCard({ name, link }) {
 		return fetch(`${this._baseUrl}/cards`, {
 			method: 'POST',
-			headers: this._headers,
+			headers: {
+				...this._headers,
+				Authorization: `Bearer ${localStorage.getItem('jwt')}$`,
+			},
 			body: JSON.stringify({ name, link }),
 		}).then(this._handleResponse)
 	}
@@ -27,21 +33,30 @@ class Api {
 	deleteCard(cardId) {
 		return fetch(`${this._baseUrl}/cards/${cardId}`, {
 			method: 'DELETE',
-			headers: this._headers,
+			headers: {
+				...this._headers,
+				Authorization: `Bearer ${localStorage.getItem('jwt')}$`,
+			},
 		}).then(this._handleResponse)
 	}
 
 	_addCardLike(cardId) {
 		return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
 			method: 'PUT',
-			headers: this._headers,
+			headers: {
+				...this._headers,
+				Authorization: `Bearer ${localStorage.getItem('jwt')}$`,
+			},
 		}).then(this._handleResponse)
 	}
 
 	_deleteCardLike(cardId) {
 		return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
 			method: 'DELETE',
-			headers: this._headers,
+			headers: {
+				...this._headers,
+				Authorization: `Bearer ${localStorage.getItem('jwt')}$`,
+			},
 		}).then(this._handleResponse)
 	}
 
@@ -52,14 +67,20 @@ class Api {
 
 	getUserInfo() {
 		return fetch(`${this._baseUrl}/users/me`, {
-			headers: this._headers,
+			headers: {
+				...this._headers,
+				Authorization: `Bearer ${localStorage.getItem('jwt')}$`,
+			},
 		}).then(this._handleResponse)
 	}
 
 	setUserInfo({ name, about }) {
 		return fetch(`${this._baseUrl}/users/me`, {
 			method: 'PATCH',
-			headers: this._headers,
+			headers: {
+				...this._headers,
+				Authorization: `Bearer ${localStorage.getItem('jwt')}$`,
+			},
 			body: JSON.stringify({ name, about }),
 		}).then(this._handleResponse)
 	}
@@ -67,7 +88,10 @@ class Api {
 	setUserAvatar(imageUrl) {
 		return fetch(`${this._baseUrl}/users/me/avatar`, {
 			method: 'PATCH',
-			headers: this._headers,
+			headers: {
+				...this._headers,
+				Authorization: `Bearer ${localStorage.getItem('jwt')}$`,
+			},
 			body: JSON.stringify({ avatar: imageUrl }),
 		}).then(this._handleResponse)
 	}
@@ -76,7 +100,6 @@ class Api {
 const instance = new Api({
 	baseUrl: 'https://api.mesto.davinchi59.nomo.nomoredomains.rocks',
 	headers: {
-		authorization: 'e32193da-5eae-4794-b26e-ef37bd7713ab',
 		'Content-Type': 'application/json',
 	},
 })

@@ -119,7 +119,7 @@ module.exports.login = (req, res, next) => {
         NODE_ENV === 'production' ? JWT_SECRET : '9198ad99c86faa69436dbd8602f720c5e5d3b33f4958c399e7c278a54a9721dc',
         { expiresIn: '7d' },
       );
-      res.status(200).cookie('jwt', token).send({ _id: user._id, token });
+      res.status(200).send({ _id: user._id, token });
     })
     .catch(next);
 };
