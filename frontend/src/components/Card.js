@@ -8,6 +8,7 @@ export default function Card({
 	onCardDelete,
 }) {
 	const currentUser = useContext(CurrentUserContext)
+	console.log(card, card.owner, currentUser)
 	const isOwn = card.owner._id === currentUser?._id
 	const isLiked = card.likes.some((i) => i._id === currentUser?._id)
 
