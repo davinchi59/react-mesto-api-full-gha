@@ -5,7 +5,7 @@ const NotFoundError = require('../errors/NotFoundError');
 const Card = require('../models/card');
 
 module.exports.getCards = (req, res, next) => {
-  Card.find({})
+  Card.find({}).populate('owner')
     .then((cards) => {
       res.send(
         cards.map((card) => ({
