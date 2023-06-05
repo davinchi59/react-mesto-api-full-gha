@@ -3,37 +3,35 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext'
 
 export default function Card({
 	card,
-	// card: { likes, link, name, owner },
 	onCardClick,
 	onCardLike,
 	onCardDelete,
 }) {
 	const currentUser = useContext(CurrentUserContext)
-	console.log(card, currentUser)
-	// const isOwn = owner._id === currentUser?._id
-	// const isLiked = likes.some((i) => i._id === currentUser?._id)
+	const isOwn = card.owner._id === currentUser?._id
+	const isLiked = card.likes.some((i) => i._id === currentUser?._id)
 
-	// const handleClickLike = (event) => {
-	// 	event.stopPropagation()
-	// 	onCardLike()
-	// }
+	const handleClickLike = (event) => {
+		event.stopPropagation()
+		onCardLike()
+	}
 
-	// const handleClickDelete = (event) => {
-	// 	event.stopPropagation()
-	// 	onCardDelete()
-	// }
+	const handleClickDelete = (event) => {
+		event.stopPropagation()
+		onCardDelete()
+	}
 
 	return (
 		<article className='post' onClick={onCardClick}>
-			{/* <img className='post__image' src={link} alt={name} />
+			<img className='post__image' src={card.link} alt={card.name} />
 			<div className='post__controls'>
-				<h2 className='post__title'>{name}</h2>
+				<h2 className='post__title'>{card.name}</h2>
 				<button
 					className={`post__like ${isLiked && 'post__like_active'}`}
 					type='button'
 					onClick={handleClickLike}
 				>
-					{likes.length}
+					{card.likes.length}
 				</button>
 			</div>
 			{isOwn && (
@@ -42,7 +40,7 @@ export default function Card({
 					type='button'
 					onClick={handleClickDelete}
 				/>
-			)} */}
+			)}
 		</article>
 	)
 }
