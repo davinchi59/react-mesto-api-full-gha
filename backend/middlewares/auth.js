@@ -4,7 +4,13 @@ const NotAuthError = require('../errors/NotAuthError');
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports = (req, res, next) => {
-  const token = req.get('Authorization').split(' ')[1];
+  const HeaderAuth = req.get('Authorization');
+
+  if (!HeaderAuth) {
+    next(new NotAuthError('Необходима авторизация'));
+  }
+
+  const token = HeaderAuth.split(' ')[1];
 
   if (!token) {
     next(new NotAuthError('Необходима авторизация'));
