@@ -31,7 +31,7 @@ class Auth {
 			method: 'GET',
 			headers: {
 				...this._headers,
-				Authorization: `Bearer ${localStorage.getItem('jwt')}$`,
+				Authorization: `Bearer ${localStorage.getItem('jwt')}`,
 			},
 		}).then((result) => this._handleResponse(result))
 	}
