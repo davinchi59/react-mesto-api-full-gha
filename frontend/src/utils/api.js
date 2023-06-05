@@ -12,7 +12,6 @@ class Api {
 
 	getInitialCards() {
 		return fetch(`${this._baseUrl}/cards`, {
-			mode: 'no-cors',
 			headers: {
 				...this._headers,
 				Authorization: `Bearer ${localStorage.getItem('jwt')}`,
@@ -22,7 +21,6 @@ class Api {
 
 	addCard({ name, link }) {
 		return fetch(`${this._baseUrl}/cards`, {
-			mode: 'no-cors',
 			method: 'POST',
 			headers: {
 				...this._headers,
@@ -34,7 +32,6 @@ class Api {
 
 	deleteCard(cardId) {
 		return fetch(`${this._baseUrl}/cards/${cardId}`, {
-			mode: 'no-cors',
 			method: 'DELETE',
 			headers: {
 				...this._headers,
@@ -45,7 +42,6 @@ class Api {
 
 	_addCardLike(cardId) {
 		return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-			mode: 'no-cors',
 			method: 'PUT',
 			headers: {
 				...this._headers,
@@ -56,7 +52,6 @@ class Api {
 
 	_deleteCardLike(cardId) {
 		return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-			mode: 'no-cors',
 			method: 'DELETE',
 			headers: {
 				...this._headers,
@@ -72,7 +67,6 @@ class Api {
 
 	getUserInfo() {
 		return fetch(`${this._baseUrl}/users/me`, {
-			mode: 'no-cors',
 			headers: {
 				...this._headers,
 				Authorization: `Bearer ${localStorage.getItem('jwt')}`,
@@ -82,7 +76,6 @@ class Api {
 
 	setUserInfo({ name, about }) {
 		return fetch(`${this._baseUrl}/users/me`, {
-			mode: 'no-cors',
 			method: 'PATCH',
 			headers: {
 				...this._headers,
@@ -94,7 +87,6 @@ class Api {
 
 	setUserAvatar(imageUrl) {
 		return fetch(`${this._baseUrl}/users/me/avatar`, {
-			mode: 'no-cors',
 			method: 'PATCH',
 			headers: {
 				...this._headers,

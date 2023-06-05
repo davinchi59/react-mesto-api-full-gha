@@ -12,25 +12,22 @@ class Auth {
 
 	signUp(password, email) {
 		return fetch(`${this._baseUrl}/signup`, {
-			mode: 'no-cors',
 			method: 'POST',
 			headers: this._headers,
 			body: JSON.stringify({ password, email }),
-		}).then((result) => this._handleResponse(result))
+		}).then(result => this._handleResponse(result))
 	}
 
 	signIn(password, email) {
 		return fetch(`${this._baseUrl}/signin`, {
-			mode: 'no-cors',
 			method: 'POST',
 			headers: this._headers,
 			body: JSON.stringify({ password, email }),
-		}).then((result) => this._handleResponse(result))
+		}).then(result => this._handleResponse(result))
 	}
 
 	checkToken(jwt) {
 		return fetch(`${this._baseUrl}/users/me`, {
-			mode: 'no-cors',
 			method: 'GET',
 			headers: {
 				...this._headers,
