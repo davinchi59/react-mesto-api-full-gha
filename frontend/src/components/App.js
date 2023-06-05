@@ -147,10 +147,10 @@ function App() {
 			.then((userInfo) => setCurrentUser(userInfo))
 			.catch((error) => console.log(error))
 
-		// api
-		// 	.getInitialCards()
-		// 	.then((cards) => setCards(cards))
-		// 	.catch((error) => console.log(error))
+		api
+			.getInitialCards()
+			.then((cards) => setCards(cards))
+			.catch((error) => console.log(error))
 	}
 
 	const handleSignIn = (password, email) => {
@@ -183,11 +183,7 @@ function App() {
 		if (!jwt) return
 		auth
 			.checkToken(jwt)
-			.then((data) => {
-				console.log(data)
-				onSignIn(jwt, data.email)
-				return
-			})
+			.then((data) => onSignIn(jwt, data.email))
 			.catch((error) => console.log(error))
 	}
 
