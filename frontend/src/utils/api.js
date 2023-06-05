@@ -74,7 +74,7 @@ class Api {
 }
 
 const instance = new Api({
-	baseUrl: 'https://api.mesto.davinchi59.nomo.nomoredomains.rocks:3000',
+	baseUrl: 'https://api.mesto.davinchi59.nomo.nomoredomains.rocks',
 	headers: {
 		authorization: 'e32193da-5eae-4794-b26e-ef37bd7713ab',
 		'Content-Type': 'application/json',
