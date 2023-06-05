@@ -149,7 +149,10 @@ function App() {
 
 		api
 			.getInitialCards()
-			.then((cards) => setCards(cards))
+			.then((cards) => {
+				console.log(cards)
+				setCards(cards)
+			})
 			.catch((error) => console.log(error))
 	}
 
