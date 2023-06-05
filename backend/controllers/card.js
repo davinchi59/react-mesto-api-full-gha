@@ -109,8 +109,6 @@ module.exports.removeCardLike = (req, res, next) => {
     throw new IncorrectDataError('Переданы некорректные данные для снятия лайка');
   }
 
-  console.log(userId);
-
   Card.findByIdAndUpdate(cardId, { $pull: { likes: userId } }, { new: true })
     .then((card) => {
       if (!card) {
