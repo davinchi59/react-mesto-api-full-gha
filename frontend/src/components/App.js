@@ -65,11 +65,7 @@ function App() {
 		const isLiked = card.likes.some((i) => i._id === currentUser?._id)
 		api
 			.toggleCardLike(card._id, !isLiked)
-			.then((newCard) =>
-				setCards((cards) =>
-					cards.map((c) => (c._id === card._id ? newCard : c))
-				)
-			)
+			.then((likes) => setCards((cards) => cards.map((c) => (c._id === card._id ? ({...c, likes}) : c))))
 			.catch((error) => console.log(error))
 	}
 
