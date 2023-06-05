@@ -38,7 +38,7 @@ class Auth {
 }
 
 const instance = new Auth({
-	baseUrl: 'http://127.0.0.1:3000',
+	baseUrl: 'https://api.mesto.davinchi59.nomo.nomoredomains.rocks:3000',
 	headers: {
 		'Content-Type': 'application/json',
 	},
