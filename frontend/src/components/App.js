@@ -183,7 +183,11 @@ function App() {
 		if (!jwt) return
 		auth
 			.checkToken(jwt)
-			.then(({data: { email }}) => onSignIn(jwt, email))
+			.then((data) => {
+				console.log(data)
+				onSignIn(jwt, data.email)
+				return
+			})
 			.catch((error) => console.log(error))
 	}
 
