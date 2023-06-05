@@ -7,6 +7,8 @@ const AlreadyExistsError = require('../errors/AlreadyExistsError');
 const User = require('../models/user');
 const NotFoundError = require('../errors/NotFoundError');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 module.exports.getUsers = (req, res, next) => {
   User.find({})
     .then((users) => res.status(200).send(users))
@@ -112,7 +114,11 @@ module.exports.login = (req, res, next) => {
       if (!matched) {
         throw new NotAuthError('Почта или пароль введены неверно');
       }
-      const token = jwt.sign({ _id: user._id }, '9198ad99c86faa69436dbd8602f720c5e5d3b33f4958c399e7c278a54a9721dc', { expiresIn: '7d' });
+      const token = jwt.sign(
+        { _id: user._id },
+        NODE_ENV === 'production' ? JWT_SECRET : '9198ad99c86faa69436dbd8602f720c5e5d3b33f4958c399e7c278a54a9721dc',
+        { expiresIn: '7d' },
+      );
       res.status(200).cookie('jwt', token, { httpOnly: true }).send({ _id: user._id });
     })
     .catch(next);

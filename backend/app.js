@@ -1,9 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const { login, createUser } = require('./controllers/user');
 const authMiddleware = require('./middlewares/auth');
 const errorMiddleware = require('./middlewares/errorMiddleware');
@@ -16,6 +18,7 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
+app.use(cors());
 app.use(rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,

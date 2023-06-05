@@ -43,15 +43,6 @@ function App() {
 
 	useEffect(() => {
 		checkAuth()
-
-		api
-			.getUserInfo()
-			.then((userInfo) => setCurrentUser(userInfo))
-			.catch((error) => console.log(error))
-
-		api.getInitialCards()
-			.then((cards) => setCards(cards))
-			.catch((error) => console.log(error))
 	}, [])
 
 	const handleEditAvatarClick = () => {
@@ -151,6 +142,15 @@ function App() {
 		setAccountInfo({email})
 		setLoggedIn(true)
 		navigate('/', {replace: true})
+		api
+			.getUserInfo()
+			.then((userInfo) => setCurrentUser(userInfo))
+			.catch((error) => console.log(error))
+
+		// api
+		// 	.getInitialCards()
+		// 	.then((cards) => setCards(cards))
+		// 	.catch((error) => console.log(error))
 	}
 
 	const handleSignIn = (password, email) => {
