@@ -117,7 +117,6 @@ function App() {
 		api
 			.addCard({name, link})
 			.then((newCard) => {
-				console.log(newCard)
 				setCards((prev) => [newCard, ...prev])
 				closeAllPopups()
 			})
