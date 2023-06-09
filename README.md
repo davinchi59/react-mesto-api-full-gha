@@ -7,7 +7,7 @@
 
 ## Ссылки на проект
 
-IP 84.201.168.115
+IP 158.160.56.232
 
 Frontend https://mesto.davinchi59.nomoredomains.rocks
 
