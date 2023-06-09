@@ -117,6 +117,7 @@ function App() {
 		api
 			.addCard({name, link})
 			.then((newCard) => {
+				console.log(newCard)
 				setCards((prev) => [newCard, ...prev])
 				closeAllPopups()
 			})
@@ -152,8 +153,11 @@ function App() {
 	const handleSignIn = (password, email) => {
 		auth
 			.signIn(password, email)
-			.then(({token}) => onSignIn(token, email))
-			.catch((error) => console.log(error))
+			.then(({ token }) => onSignIn(token, email))
+			.catch((error) => {
+				showInfoTooltip(InfoTooltipTypes.Error)
+				console.log(error)
+			})
 	}
 
 	const handleSignUp = (password, email) => {

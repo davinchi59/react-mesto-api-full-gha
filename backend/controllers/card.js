@@ -26,6 +26,13 @@ module.exports.createCard = (req, res, next) => {
 
   Card.create({ name, link, owner })
     .then((card) => {
+      console.log({
+        _id: card._id,
+        name: card.name,
+        link: card.link,
+        owner: card.owner,
+        likes: card.likes,
+      });
       res.status(201).send({
         _id: card._id,
         name: card.name,
